@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'dart:ui';
 
 import 'package:dynamic_widget/dynamic_widget.dart';
@@ -399,6 +400,35 @@ CrossAxisAlignment parseCrossAxisAlignment(String? crossAxisAlignmentString) {
   return CrossAxisAlignment.center;
 }
 
+
+TextInputType parseTextInputType(String? stringInputType) {
+  if (stringInputType == "datetime") {
+    return TextInputType.datetime;
+  } else if (stringInputType == "emailAddress") {
+    return TextInputType.emailAddress;
+  } else if (stringInputType == "multiline") {
+    return TextInputType.multiline;
+  } else if (stringInputType == "name") {
+    return TextInputType.name;
+  } else if (stringInputType == "none") {
+    return TextInputType.none;
+  } else if (stringInputType == "number") {
+    return TextInputType.number;
+  } else if (stringInputType == "phone") {
+    return TextInputType.phone;
+  } else if (stringInputType == "streetAddress") {
+    return TextInputType.streetAddress;
+  } else if (stringInputType == "text") {
+    return TextInputType.text;
+  } else if (stringInputType == "url") {
+    return TextInputType.url;
+  } else if (stringInputType == "visiblePassword") {
+    return TextInputType.visiblePassword;
+  } else {
+    return TextInputType.none;
+  }
+}
+
 String exportCrossAxisAlignment(CrossAxisAlignment crossAxisAlignment) {
   String rt = "center";
   if (crossAxisAlignment == CrossAxisAlignment.start) {
@@ -747,7 +777,6 @@ FilterQuality? parseFilterQuality(String? filterQualityString) {
 }
 
 String exportFilterQuality(FilterQuality filterQuality) {
-
   String rt = "low";
   if (filterQuality == FilterQuality.none) {
     rt = "none";
@@ -943,7 +972,6 @@ Clip parseClipBehavior(String? clipBehaviorString) {
 }
 
 String exportClipBehavior(Clip clip) {
-
   if (clip == Clip.antiAliasWithSaveLayer) {
     return "antiAliasWithSaveLayer";
   }
@@ -1031,7 +1059,8 @@ DropCap? parseDropCap(Map<String, dynamic>? map, BuildContext buildContext,
   );
 }
 
-Map<String, dynamic>? exportDropCap(DropCap? dropCap, BuildContext? buildContext) {
+Map<String, dynamic>? exportDropCap(
+    DropCap? dropCap, BuildContext? buildContext) {
   if (dropCap == null) {
     return null;
   }
@@ -1042,8 +1071,7 @@ Map<String, dynamic>? exportDropCap(DropCap? dropCap, BuildContext? buildContext
   };
 }
 
-String exportAlignmentDirectional(AlignmentDirectional alignmentDirectional){
-
+String exportAlignmentDirectional(AlignmentDirectional alignmentDirectional) {
   if (alignmentDirectional == AlignmentDirectional.bottomCenter) {
     return "bottomCenter";
   }
@@ -1136,4 +1164,32 @@ Map<String, dynamic> exportConstraints(BoxConstraints constraints) {
         ? infinity
         : constraints.maxHeight,
   };
+}
+
+String exportTextInputType(TextInputType textInputType) {
+  if (textInputType == TextInputType.datetime) {
+    return "datetime";
+  } else if (textInputType == TextInputType.emailAddress) {
+    return "emailAddress";
+  } else if (textInputType == TextInputType.multiline) {
+    return "multiline";
+  } else if (textInputType == TextInputType.name) {
+    return "name";
+  } else if (textInputType == TextInputType.none) {
+    return "none";
+  } else if (textInputType == TextInputType.number) {
+    return "number";
+  } else if (textInputType == TextInputType.phone) {
+    return "phone";
+  } else if (textInputType == TextInputType.streetAddress) {
+    return "streetAddress";
+  } else if (textInputType == TextInputType.text) {
+    return "text";
+  } else if (textInputType == TextInputType.url) {
+    return "uri";
+  } else if (textInputType == TextInputType.visiblePassword) {
+    return "visiblePassword";
+  } else {
+    return "none";
+  }
 }
